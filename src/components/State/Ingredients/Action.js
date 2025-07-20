@@ -1,7 +1,7 @@
 // action.js
 import axios from 'axios';
 import { CREATE_INGREDIENT_CATEGORY_FAILURE, CREATE_INGREDIENT_CATEGORY_SUCCESS, CREATE_INGREDIENT_SUCCESS, GET_INGREDIENTS, GET_INGREDIENT_CATEGORY_FAILURE, GET_INGREDIENT_CATEGORY_SUCCESS, UPDATE_STOCK } from './ActionType';
-import { API_URL, api } from '../../../config/api';
+import { API_URL, api } from '../../Config/Api';
 
 export const getIngredientsOfRestaurant = ({id,jwt}) => {
   return async (dispatch) => {

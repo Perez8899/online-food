@@ -43,7 +43,9 @@ const navigateToRestaurant = () => {
             <div className='space-y-1'>
                 <p className='font-semibold text-lg'>{data.name}</p>{/* restaurant name */}
                 <p className="text-gray-500 text-sm">
-                    {data.description}                               {/* Restaurant Description */}
+                       {data.description.length > 40
+                        ? data.description.substring(0, 40) + "..."
+                        : data.description} {/* Restaurant Description */}
                 </p>
             </div>
             <div>

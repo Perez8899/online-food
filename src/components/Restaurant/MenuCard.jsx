@@ -38,7 +38,7 @@ const MenuCard = ({item}) => {
       );
   }else{
        console.log("no");
-      setSelectedIngredients([...selectedIngredients, itemName]); //no tiene el el set es Selected...
+      setSelectedIngredients([...selectedIngredients, itemName]); //no tiene el  set es Selected...
   }
   }
 

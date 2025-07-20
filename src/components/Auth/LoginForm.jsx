@@ -1,76 +1,140 @@
-import { Button, TextField, Typography } from '@mui/material'
-import { Field, Form, Formik } from 'formik'
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { loginUser } from '../State/Authentication/Action'
+import { Button, Container, TextField, Typography, IconButton, InputAdornment } from '@mui/material';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../State/Authentication/Action';
+import * as Yup from "yup";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const initialValues = {
   email: "",
   password: "",
 }
 
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Formato inválido de email")
+    .required("Email es requerido"),
+  password: Yup.string().required("Contraseña es requerida"),
+});
+
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const navigate=useNavigate()
-  const dispatch= useDispatch()
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handelSubmit = (values) => {
-/// You can handle login submission here, e.g., send data to your server
-       dispatch(loginUser({userData:values, navigate}))
-  }
+  const handleSubmit = (values) => {
+    dispatch(loginUser({ userData: values, navigate }));
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
-/**form To log in */
-    <div>
-      <Typography className="text-center " variant="h5">
-        Login
-      </Typography>
+    <Container component="main" maxWidth="xs">
+      <div>
+        <Typography className="text-center" variant="h5">
+          Login
+        </Typography>
 
-      <Formik initialValues={initialValues}
-        onSubmit={handelSubmit}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ handleChange, handleBlur, values }) => (
+            <Form>
+              <TextField
+                margin="normal"
+                variant="outlined"
+                fullWidth
+                label="Email"
+                name="email"
+                id="email"
+                autoComplete="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                helperText={
+                  <ErrorMessage name="email">
+                    {(msg) => (
+                      <span style={{ color: '#808080' }}>{msg}</span>
+                    )}
+                  </ErrorMessage>
+                }
+              />
 
-        <Form>
-          <Field
-            as={TextField}
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            label="Email Address"
-            name="email"
-          />
-          <Field
-            as={TextField}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            label="Password"
-            name="password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            sx={{ mt: 2, padding: "1rem" }}
-          >
-            Login
-          </Button>
-        </Form>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                label="Contraseña"
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                type={showPassword ? 'text' : 'password'}
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                helperText={
+                  <ErrorMessage name="password">
+                    {(msg) => (
+                      <span style={{ color: '#808080' }}>{msg}</span>
+                    )}
+                  </ErrorMessage>
+                }
+              />
 
-      </Formik>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                sx={{
+                  mt: 2,
+                  padding: "1rem",
+                  "&:hover": {
+                    backgroundColor: " #479b67",
+                  },
+                }}
+              >
+                Login
+              </Button>
+            </Form>
+          )}
+        </Formik>
 
-{/** Don\'t have an account? , send it to registration*/}
-      <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 3 }}>
-        {'No tengo Cuenta? '}
-        <Button>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          align="center"
+          sx={{ mt: 3 }}
+        >
+          {'¿No tienes cuenta? '}
           <Button onClick={() => navigate("/account/register")}>
             Registrar
           </Button>
-        </Button>
-      </Typography>
-    </div>
-  )
-}
+        </Typography>
+      </div>
+    </Container>
+  );
+};
 
-export default LoginForm
+export default LoginForm;

@@ -44,7 +44,7 @@ const ProfileNavigation = ({open, handleClose}) => {
    
   return (
     <div>  
-      <Drawer sx={{ zIndex: 1}}//  Defines the z-index of the Drawer.
+      <Drawer sx={{ zIndex: 1}}// / Defines the z-index of the Drawer.
               anchor={"left"}   // The Drawer appears from the left.
               open={open}       // Controls whether the drawer is open or closed.
               onClose={handleClose}// Executes handleClose when the user closes the Drawer.
@@ -55,7 +55,8 @@ const ProfileNavigation = ({open, handleClose}) => {
 
                 {menu.map((item, i)=><>
                 <div onClick={() => handleNavigate(item)}
-                     className='px-5 flex items-center space-x-5 cursor-pointer'>
+                     className="px-5 flex items-center space-x-5 cursor-pointer
+            hover:bg-[#7de51c] hover:bg-opacity-50  transition-colors duration-300">
                     {item.icon}
                     <span>{item.title}</span>
                 </div>

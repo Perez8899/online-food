@@ -13,6 +13,7 @@ const Navbar = () => {
     const {auth, cart} = useSelector(store=>store); //access to the store
 
     const navigate=useNavigate();
+
      const navigateToCart = () => {
     navigate("/cart");
   };
@@ -21,12 +22,12 @@ const Navbar = () => {
         if(auth.user?.role ==="ROLE_CUSTOMER"){
             navigate("/my-profile");
         }else{
-            navigate("/admin/restaurant");
+            navigate("/admin/restaurants");
         }
     }
 
     return (
-   <Box  className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#8e1212]  lg:px-20 flex justify-between">    
+   <Box  className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#9f3e3e]  lg:px-20 flex justify-between">    
 
  {/* Logo ---------------------------------------------------------------------*/}
             <div className='lg:mr-10 cursor-pointer flex items-center space-x-4'>
@@ -39,7 +40,7 @@ const Navbar = () => {
             <div className='flex items-center space-x-2 lg:space-x-10'>
 {/*Search button */}
                 <div className=''>
-                    <IconButton>
+                    <IconButton onClick={() => navigate("/search")}>
                         <SearchIcon sx={{ fontSize: "1.5rem" }} />
                     </IconButton>
                 </div>

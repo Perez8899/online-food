@@ -7,7 +7,6 @@ const Favorities = () => {
   const {auth} = useSelector(store => store);
 
   useEffect(()=>{
-    // dispatch()
   },[])
 
   return (

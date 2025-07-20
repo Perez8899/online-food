@@ -13,9 +13,9 @@ const AddressCard = ({item,showButton, handleSelectAddress}) => {
             <div className="space-y-3 text-gray-500">
                 <h1 className="font-semibold text-lg text-white">Home</h1>
                 <p>
-                    Santa rita, rio cuarto, calle 771
-                    {/*item.streetAddress}, {item.postalCode}, {item.state}, {item.country*/}
-                    {/* {`${address?.streetAddress} ${address?.city} ${address?.state} ${address?.zipCode}`} */}
+                    {/* Santa rita, rio cuarto, calle 771 */}
+                    {item.streetAddress}, {item.postalCode}, {item.state}, {item.country}
+                    
                 </p>
 
                 {showButton && (

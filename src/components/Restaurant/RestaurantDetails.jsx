@@ -72,21 +72,21 @@ const RestaurantDetails = () => {
                 <h3 className='text-gray-500 py-2 mt-10'>Home/santarita/Zaira Restaurant fast food/3</h3>
                 <div>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
+                        <Grid item size={12}>
                             <img
                                 className="w-full h-[40vh] object-cover"
                                 src="https://images.pexels.com/photos/5786388/pexels-photo-5786388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                 alt=""
                             />
                         </Grid>
-                        <Grid item xs={12} lg={6}>
+                        <Grid item size={6} lg={6}>
                             <img
                                 className="w-full h-[40vh] object-cover"
                                 src={restaurant.restaurant?.images[0]}
                                 alt=""
                             />
                         </Grid>
-                        <Grid item xs={12} lg={6}>
+                        <Grid item size={6} lg={6}>
                             <img
                                 className="w-full h-[40vh] object-cover"
                                 src={restaurant.restaurant?.images[0]}
@@ -138,7 +138,7 @@ const RestaurantDetails = () => {
                                                                              value={item.value} 
                                                                              control={<Radio />} 
                                                                              label={item.label} 
-                                                                             sx={{ color: "#FFD700" }}/>))}
+                                                                             sx={{ color: "#8e1212"}}/>))}
                                 </RadioGroup>
                             </FormControl>
                         </div>
@@ -159,7 +159,7 @@ const RestaurantDetails = () => {
                                                                              value={item.name} 
                                                                              control={<Radio />} 
                                                                              label={item.name} 
-                                                                             sx={{ color: "#FFD700" }}/>))}
+                                                                             sx={{ color: "#8e1212" }}/>))}
                                 </RadioGroup>
                             </FormControl>
                         </div>

@@ -62,7 +62,7 @@ const dispatch = useDispatch();
         </div>
       </div>
       <div className='pt-3 space-x-2'>
-        {item.ingredients.map((ingredient)=> <Chip label= {ingredient}/>)} {/**ingredient = es lo mismo item*/}
+        {item.ingredients.map((ingredient)=> <Chip label= {ingredient}/>)} 
       </div>
     </div>
   )

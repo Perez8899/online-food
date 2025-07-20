@@ -5,25 +5,22 @@ import RestaurantCard from '../Restaurant/RestaurantCard'
 import { getAllRestaurantsAction } from '../State/Restaurant/Action'
 import{ useDispatch, useSelector} from 'react-redux'
 
-//const restaurants = [1, 1, 1, 1, 1, 1, 1, 1]
+
 const Home = () => {
 
-  //const { auth, restaurant} = useSelector((store) => store); //extracts data from the Redux store
-  //const dispatch = useDispatch();                             //shoot an action
-
-  //useEffect(() => {                                           //API calls
-    //if (auth.user) {
-     // dispatch(getAllRestaurantsAction(localStorage.getItem("jwt")));
-    //}
-  //}, [auth.user]);
-  const dispatch = useDispatch();  
-  const jwt = localStorage.getItem("jwt")
-  const {restaurant} = useSelector(store => store);
-  console.log("restaurant", restaurant)
+  const { auth, restaurant} = useSelector((store) => store); //extracts data from the Redux store
 
   useEffect(() => {                                           //API calls
-    dispatch(getAllRestaurantsAction(jwt));
-  }, []);
+    if (auth.user) {
+     dispatch(getAllRestaurantsAction(localStorage.getItem("jwt")));
+    }
+  }, [auth.user]);
+
+  const dispatch = useDispatch();  
+  const jwt = localStorage.getItem("jwt")
+  //const {restaurant} = useSelector(store => store);
+  console.log("restaurant", restaurant)
+
 
     return (
     <div className='pb-10'>
@@ -55,7 +52,8 @@ const Home = () => {
           </h1>
           <div className="flex flex-wrap items-center justify-around gap-5">
             {
-              restaurant.restaurants.map((item) => <RestaurantCard data= {item} />)
+              restaurant.restaurants.map((item, i) => 
+              <RestaurantCard data= {item} index={i} />)
             }
           </div>
         </div>

@@ -11,7 +11,8 @@ import { ADD_TO_FAVORITES_FAILURE,
     LOGOUT, 
     REGISTER_FAILURE, 
     REGISTER_REQUEST, 
-    REGISTER_SUCCESS } from "./ActionType";
+    REGISTER_SUCCESS,
+   } from "./ActionType";
 import { api, API_URL } from "../../Config/Api";
 
 //method register--------------------------------------------------------------------------------
@@ -24,13 +25,13 @@ export const registerUser = (reqData) => async (dispatch) => {
 //if there is data we have the JWT and store it in the localStorage
       if(data.jwt) localStorage.setItem("jwt",data.jwt)         
       if(data.role==="ROLE_RESTAURANT_OWNER"){
-        reqData.navigate("/admin/restaurant")
+        reqData.navigate("/admin/restaurants")
       }
       else{
         reqData.navigate("/")
       }
 
-      dispatch({ type: REGISTER_SUCCESS, payload: data.jwt });
+      dispatch({ type: REGISTER_SUCCESS, payload: data });
       console.log("Registro Exitoso ", data);
 
 
@@ -57,13 +58,13 @@ export const loginUser = (reqData) => async (dispatch) => {
 //if there is data we have the JWT and store it in the localStorage
       if(data.jwt) localStorage.setItem("jwt",data.jwt)         
       if(data.role==="ROLE_RESTAURANT_OWNER"){
-        reqData.navigate("/admin/restaurant")
+        reqData.navigate("/admin/restaurants")
       }
       else{
         reqData.navigate("/")
       }
 
-      dispatch({ type: LOGIN_SUCCESS, payload: data.jwt });
+      dispatch({ type: LOGIN_SUCCESS, payload: data });
       console.log("Login Exitoso ", data);
 
 

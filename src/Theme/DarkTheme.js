@@ -7,7 +7,7 @@ const darkTheme = createTheme({
           main: "#7de51c", 
         },
         secondary: {
-          main: "#5A20CB", 
+          main: "#888888", 
         },
         black: {
           main: "#242B2E",
@@ -15,7 +15,7 @@ const darkTheme = createTheme({
         background: {
           main: "#000000",
           default: "#999999",
-          paper: "#0D0D0D",
+          paper: "#222222",
         },
         textColor: {
           main: "#111111",

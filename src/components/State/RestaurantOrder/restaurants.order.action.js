@@ -8,7 +8,7 @@ import {
   GET_RESTAURANTS_ORDER_SUCCESS,
   GET_RESTAURANTS_ORDER_FAILURE,
 } from "./ActionType.js";
-import { api } from "../../../config/api.js";
+import { api } from "../../Config/Api.js";
 
 export const updateOrderStatus = ({orderId,orderStatus,jwt}) => {
   return async (dispatch) => {
@@ -16,7 +16,7 @@ export const updateOrderStatus = ({orderId,orderStatus,jwt}) => {
       dispatch({ type: UPDATE_ORDER_STATUS_REQUEST });
 
       const response = await api.put(
-        `/api/admin/orders/${orderId}/${orderStatus}`,{},{
+        `/api/admin/order/${orderId}/${orderStatus}`,{},{
           headers: {
             Authorization: `Bearer ${jwt}`,
           },

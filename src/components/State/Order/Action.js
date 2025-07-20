@@ -1,8 +1,8 @@
 import { api } from "../../Config/Api";
 
-// import { createOrderFailure, createOrderRequest, createOrderSuccess, getUsersOrdersFailure, getUsersOrdersRequest, getUsersOrdersSuccess } from "./ActionCreators";
+//import { createOrderFailure, createOrderRequest, createOrderSuccess, getUsersOrdersFailure, getUsersOrdersRequest, getUsersOrdersSuccess } from "./ActionCreators";
 
-import { CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_NOTIFICATION_FAILURE, 
+import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_NOTIFICATION_FAILURE, 
     GET_USERS_NOTIFICATION_REQUEST, 
     GET_USERS_NOTIFICATION_SUCCESS, 
     GET_USERS_ORDERS_FAILURE, 
@@ -19,15 +19,17 @@ export const createOrder = (reqData) => {
             Authorization: `Bearer ${reqData.jwt}`,
           },
       });
+
 //INTEGRACION DE PAGOS-----------------------------------------------   
-    //   if(data.payment_url){
-    //     window.location.href=data.payment_url;
-    //   }
+       if(data.payment_url){
+       window.location.href=data.payment_url;
+      }
+       
       console.log("created order data",data)
       dispatch({type:CREATE_ORDER_SUCCESS, payload:data});
     } catch (error) {
       console.log("error ",error)
-      dispatch({type:CREATE_ORDER_SUCCESS, payload:error});
+      dispatch({type:CREATE_ORDER_FAILURE, payload:error});
     }
   };
 };
@@ -51,11 +53,15 @@ export const getUsersOrders = (jwt) => {
 };
 
 
-export const getUsersNotificationAction = () => { //NO SE HISO- se ara mas adelante -----------------------
+export const getUsersNotificationAction = (jwt) => { 
   return async (dispatch) => {
     dispatch({type:GET_USERS_NOTIFICATION_REQUEST});
     try {
-      const {data} = await api.get('/api/notifications');
+      const {data} = await api.get('/api/notifications', {
+        headers: {
+          Authorization: `Bearer ${jwt}`, // send the token
+        },
+      });
      
       console.log("all notifications ",data)
       dispatch({type:GET_USERS_NOTIFICATION_SUCCESS,payload:data});

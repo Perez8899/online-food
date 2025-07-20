@@ -12,6 +12,7 @@ const UserProfile = () => {
 const {auth} = useSelector(store=>store);
 const navigate= useNavigate();
 const dispatch= useDispatch();
+
   const handleLogout=()=>{
         navigate("/")
         dispatch(logout());
@@ -22,8 +23,8 @@ const dispatch= useDispatch();
 
       <div className='flex flex-col items-center justify-center'>
         <AccountCircleIcon sx={{fontSize:"9rem"}}/>
-        <h1 className='py-5 text-2xl font-semibold'>Hector Perez</h1> {/*auth.user?.fullName*/}
-        <p>Email : hector@gmail.com</p>                             {/*auth.user?.email*/}
+        <h1 className='py-5 text-2xl font-semibold'>{auth.user?.fullName}</h1> {/*auth.user?.fullName*/}
+        <p>Email : {auth.user?.email}</p>                                  {/*auth.user?.email*/}
         <Button onClick={handleLogout} variant='contained' sx={{margin:"2rem 0rem"}}>Logout</Button>
       </div>
 

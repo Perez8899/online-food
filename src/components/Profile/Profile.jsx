@@ -35,9 +35,9 @@ const Profile = () => {
           <Route path="/ordenes" element={<Orders/>} />
           <Route path="/direccion" element={<UsersAddresses/>} />
           <Route path="/favoritos" element={<Favorite/>} />
-           <Route path="/pago" element={<Orders/>} />            {/**no se crea todavia */}
+           <Route path="/pago" element={<Orders/>} />           
           <Route path="/eventos" element={<CustomerEvents/>} />
-          <Route path="/notificacion" element={<Notifications/>} /> {/*no se crea todavia*/ }
+          <Route path="/notificacion" element={<Notifications/>} />
 
         </Routes>
       </div>

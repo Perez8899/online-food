@@ -1,8 +1,9 @@
-import React from 'react'
+
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Box, Modal } from '@mui/material';
+import {Box, Modal} from '@mui/material';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
+
 
 const style = {
     position: "absolute",
@@ -22,7 +23,7 @@ const Auth = () => {
     const handleClose =()=> {
        navigate("/")
     };
-
+    
   return (
    <>
        <Modal 

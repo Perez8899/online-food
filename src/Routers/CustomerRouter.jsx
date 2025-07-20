@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import Home from '../components/Home/Home'
@@ -6,6 +6,9 @@ import Cart from '../components/Cart/Cart'
 import RestaurantDetails from '../components/Restaurant/RestaurantDetails'
 import Profile from '../components/Profile/Profile'
 import Auth from '../components/Auth/Auth'
+import PaymentSuccess from '../components/PaymentSuccess/PaymentSuccess'
+import Search from '../components/Search/Search'
+import CreaterRestaurantForm from '../AdminComponent/CreateRestaurantForm/CreaterRestaurantForm'
 
 const CustomerRouter = () => {
   return (
@@ -19,6 +22,9 @@ const CustomerRouter = () => {
         <Route exact path='/restaurant/:city/:title/:id' element={<RestaurantDetails />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/my-profile/*' element={<Profile />} />
+        <Route path='/payment/success/:id' element={<PaymentSuccess/>}/>'
+        <Route path='/admin/add-restaurant' element={<CreaterRestaurantForm/>}/>
+        <Route path='/search' element={<Search/>}/>
       </Routes>
       <Auth/>
     </div>
