@@ -15,7 +15,7 @@ import { updateRestaurantStatus } from '../../components/State/Restaurant/Action
 
 const RestaurantDetails = () => {
   const dispatch = useDispatch();
-  const { auth, restaurant, ingredients } = useSelector((store) => store);
+  const { auth, restaurant } = useSelector((store) => store);
   const jwt = localStorage.getItem("jwt");
 
   const handleRestaurantStatus = () => {
@@ -39,7 +39,6 @@ const RestaurantDetails = () => {
           <Button
             onClick={handleRestaurantStatus}
             size="large"
-            //sx={{ padding: "1rem 2rem" }}
             className="py-[1rem] px-[2rem]"
             variant="contained"
             color={restaurant.usersRestaurant?.open ? "error" : "primary"}
@@ -53,10 +52,10 @@ const RestaurantDetails = () => {
 
       </div>
 
-      <Grid container spacing={2}>
-{/* Restaurant owner */}
+      <Grid container spacing={2} sx={{ display: 'flex' }}>
+        {/* Restaurant owner */}
         <Grid item xs={12}>
-          <Card>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardHeader title={<span className="text-gray-300"> Restaurante</span>} />
             <CardContent>
               <div className="space-y-4 text-gray-200">
@@ -119,9 +118,9 @@ const RestaurantDetails = () => {
 
           </Card>
         </Grid>
-{/* Address */}
+        {/* Address */}
         <Grid item xs={12} lg={6}>
-          <Card>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardHeader title={<span className="text-gray-300">Direccion</span>} />
             <CardContent>
               <div className="space-y-4 text-gray-200">
@@ -130,7 +129,7 @@ const RestaurantDetails = () => {
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
-                     {restaurant.usersRestaurant?.address.country}
+                    {restaurant.usersRestaurant?.address.country}
                   </p>
                 </div>
                 {/* ----------------------------------------------------------------- */}
@@ -139,7 +138,7 @@ const RestaurantDetails = () => {
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
-                     {restaurant.usersRestaurant?.address.city}
+                    {restaurant.usersRestaurant?.address.city}
                   </p>
                 </div>
                 {/* ----------------------------------------------------------------- */}
@@ -148,7 +147,7 @@ const RestaurantDetails = () => {
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
-                     {restaurant.usersRestaurant?.address.postalCode}
+                    {restaurant.usersRestaurant?.address.postalCode}
                   </p>
                 </div>
                 {/* ----------------------------------------------------------------- */}
@@ -157,7 +156,7 @@ const RestaurantDetails = () => {
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
-                     {restaurant.usersRestaurant?.address.streetAddress}
+                    {restaurant.usersRestaurant?.address.streetAddress}
                   </p>
                 </div>
                 {/* ----------------------------------------------------------------- */}
@@ -167,9 +166,9 @@ const RestaurantDetails = () => {
 
           </Card>
         </Grid>
-{/* Restaurant Contact */}
+        {/* Restaurant Contact */}
         <Grid item xs={12} lg={6}>
-          <Card>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardHeader title={<span className="text-gray-300"> Contacto</span>} />
             <CardContent>
               <div className="space-y-4 text-gray-200">
@@ -198,23 +197,23 @@ const RestaurantDetails = () => {
                   <div className="text-gray-400 flex items-center pb-3">
                     <span className="pr-5">-</span>
                     <a target="_blank" href={
-                        restaurant.usersRestaurant?.contactInformation.instagram
-                      }
+                      restaurant.usersRestaurant?.contactInformation.instagram
+                    }
                       rel="noreferrer"
                     > <InstagramIcon sx={{ fontSize: "3rem", "&:hover": { color: "#7de51c" } }} /> </a>
                     <a target="_blank" href={
-                        restaurant.usersRestaurant?.contactInformation.twitter
-                      }
+                      restaurant.usersRestaurant?.contactInformation.twitter
+                    }
                       rel="noreferrer"
                     > <TwitterIcon sx={{ fontSize: "3rem", "&:hover": { color: "#7de51c" } }} /> </a>
                     <a target="_blank" href={
-                        restaurant.usersRestaurant?.contactInformation.instagram
-                      }
+                      restaurant.usersRestaurant?.contactInformation.instagram
+                    }
                       rel="noreferrer"
                     > <LinkedInIcon sx={{ fontSize: "3rem", "&:hover": { color: "#7de51c" } }} /> </a>
                     <a target="_blank" href={
-                        restaurant.usersRestaurant?.contactInformation.instagram
-                      }
+                      restaurant.usersRestaurant?.contactInformation.instagram
+                    }
                       rel="noreferrer"
                     > <FacebookIcon sx={{ fontSize: "3rem", "&:hover": { color: "#7de51c" } }} /> </a>
                   </div>

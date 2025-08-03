@@ -11,7 +11,6 @@ import { createMenuItem } from "../../components/State/Menu/Action"
 import { uploadToCloudinary } from '../util/UploadToCloudinary';
 //import MenuItem from "@mui/material/MenuItem";
 import Grid from '@mui/material/Grid';
-import { useParams } from "react-router-dom";
 
 import * as Yup from "yup";
 
@@ -69,7 +68,7 @@ const AddMenuForm = () => {
   const { restaurant, ingredients, auth, menu } = useSelector((store) => store);
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt")
-  
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -216,7 +215,7 @@ const AddMenuForm = () => {
                 name="price"
                 label="Precio"
                 variant="outlined"
-                type="text" 
+                type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.price}
@@ -226,7 +225,7 @@ const AddMenuForm = () => {
                   const value = e.target.value;
                   const regex = /^\d*\.?\d{0,2}$/;
                   if (!regex.test(value)) {
-                    e.target.value = formik.values.price; 
+                    e.target.value = formik.values.price;
                   }
                 }}
               />
@@ -365,7 +364,7 @@ const AddMenuForm = () => {
         </Alert>
       </Snackbar>
 
-    </div> //final div
+    </div> //end  div
 
   );
 };

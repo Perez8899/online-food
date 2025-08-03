@@ -31,11 +31,19 @@ const initialValues = {
   city: ""
 }
 const validationSchema = Yup.object().shape({
-  streetAddress: Yup.string().required("Direccion Obligatoria"),
-  state: Yup.string().required("Provincia es Requerido"),
-  pincode: Yup.string().required("Codigo Postal Requerido")
-    .matches(/^\d{4}$/, "Codigo solo de 4 digitos"),
-  city: Yup.string().required("Ciudad Requerido"),
+  streetAddress: Yup.string()
+    .trim()
+    .required("Direccion Obligatoria"),
+  state: Yup.string()
+    .trim()
+    .required("Provincia es Requerido"),
+  pincode: Yup.string()
+    .trim()
+    .required("Codigo Postal Requerido")
+    .matches(/^\d{4}$/, "Codigo postal solo de 4"),
+  city: Yup.string()
+    .trim()
+    .required("Ciudad Requerido"),
 })
 
 const Cart = () => {

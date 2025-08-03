@@ -45,7 +45,7 @@ const navigateToRestaurant = () => {
                 <p className="text-gray-500 text-sm">
                        {data.description.length > 40
                         ? data.description.substring(0, 40) + "..."
-                        : data.description} {/* Restaurant Description */}
+                        : data.description} 
                 </p>
             </div>
             <div>

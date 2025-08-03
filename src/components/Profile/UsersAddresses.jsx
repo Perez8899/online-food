@@ -5,7 +5,6 @@ import AddressCard from '../Cart/AddressCard'
 const UsersAddresses = () => {
   const {auth} = useSelector(state=>state)
 
-
   return (
     <div>
       <div className="flex items-center flex-col lg:px-10">
