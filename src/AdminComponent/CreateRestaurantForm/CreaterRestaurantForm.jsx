@@ -22,26 +22,33 @@ const validationSchema = Yup.object().shape({
     .max(500, 'La descripción no puede exceder los 500 caracteres'),
 
   cuisineType: Yup.string()
+    .trim()
     .required('Selecciona un tipo de cocina'),
 
   streetAddress: Yup.string()
+  .trim()
     .required('La dirección es obligatoria')
     .min(5, 'La dirección debe tener al menos 5 caracteres'),
 
   city: Yup.string()
+  .trim()
     .required('La ciudad es obligatoria'),
 
   stateProvince: Yup.string()
+  .trim()
     .required('El estado/provincia es obligatorio'),
 
   postalCode: Yup.string()
+  .trim()
     .required('El código postal es obligatorio')
     .matches(/^[0-9]+$/, 'El código postal solo debe contener números'),
 
   country: Yup.string()
+  .trim()
     .required('El país es obligatorio'),
 
   openingHours: Yup.string()
+  .trim()
     .required('Los horarios de apertura son obligatorios')
     .matches(
       /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(-(Mon|Tue|Wed|Thu|Fri|Sat|Sun))?: \d{1,2}:\d{2} (AM|PM) - \d{1,2}:\d{2} (AM|PM)$/,
@@ -49,15 +56,18 @@ const validationSchema = Yup.object().shape({
     ),
 
   email: Yup.string()
+  .trim()
     .email('Ingresa un email válido')
     .required('El email es obligatorio'),
 
   mobile: Yup.string()
+  .trim()
     .required('El teléfono móvil es obligatorio')
     .matches(/^[0-9]+$/, 'El teléfono solo debe contener números')
     .min(8, 'El teléfono debe tener al menos 8 dígitos'),
 
   twitter: Yup.string()
+  .trim()
     .url('Ingresa una URL válida de Twitter')
     .nullable()
     .matches(
